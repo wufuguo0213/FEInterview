@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //冒泡排序
+    let arr = [23, 5, 12, 6, 2, 34, 6, 23, 4, 6, 234, 6, 3, 23]
+    let l = arr.length
+    console.log('原始数组：' + arr);
+    for (let i = 0; i < l - 1; i++) {
+        for (let j = 0; j < l - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                let temp = arr[j + 1]
+                arr[j + 1] = arr[j]
+                arr[j] = temp
+            }
+        }
+    }
+    console.log('冒泡排序：' + arr);
+    ////////////////////////////////////////////////////////////////////////////////////
+    //树
+    // let pree = [1,2,3,4,5,6,7]
+    // let vinn = [3,2,4,1,6,5,7]
+    // function reConstructBinaryTree(pre, vin) {
+    //     let node = pre[0]
+    //     let nodeIndex = vin.indexOf(node)
+    //     let leftNode = vin.slice(0,nodeIndex)
+    //     let rightNode = vin.slice(nodeIndex+1)
+        
+    //     console.log(leftNode);
+    //     console.log(rightNode);
+    // }
+    // reConstructBinaryTree(pree,vinn)
+    // console.log('答案：1,2,5,3,4,6,7');
+    /////////////////////////////////////////////////////////////////////////////////
+    //选择排序
+    //从小到大
+    // for(let i=0;i<l-1;i++){
+    //     let minIndex = i
+    //     for(let j=i+1;j<l;j++){
+    //         if(arr[j]<arr[minIndex]){
+    //             minIndex = j
+    //         }
+    //     }
+    //     if(minIndex !== i){
+    //         let temp = arr[i]
+    //         arr[i] = arr[minIndex]
+    //         arr[minIndex] = temp
+    //     }
+    // }
+    //从大到小
+    for(let i=0;i<l-1;i++){
+        let maxIndex = i
+        for(let j=i;j<l;j++){
+            if(arr[j]>arr[maxIndex]){
+                maxIndex = j
+            }
+        }
+        if(maxIndex !== i){
+            let temp = arr[i]
+            arr[i] = arr[maxIndex]
+            arr[maxIndex] = temp
+        }
+    }
+    console.log('选择排序：' + arr);
+    ////////////////////////////////////////////////////////////////////////////////
+    //插入排序
+    for(let i=0;i<l;i++){
+        let temp = arr[i]
+        let j =i
+        while(j-1 >= 0 && arr[j-1] > temp){
+            arr[j] = arr[j-1]
+            j--
+        }
+        arr[j] = temp
+    }
+    console.log('插入排序：' + arr);
+    console.log('sort排序：' + arr.sort((a,b)=>{a-b}).reverse());
+    ////////////////////////////////////////////////////////////////////////////////////
+    //归并排序 比较两个有序数组，将小的push到res中，直到某个有序数组的元素全部比较完成
+    let array1 = [1,3,5,6,8] 
+    let array2 = [2,2,4,8,9]
+    let l1 = array1.length
+    let l2 = array2.length
+    let i1 = 0
+    let i2 = 0
+    let res = []
+    while(i1<l1&&i2<l2){
+        if(array1[i1]<array2[i2]){
+            res.push(array1[i1])
+            i1++
+        }else{
+            res.push(array2[i2])
+            i2++
+        }
+    }
+    while(i1<l1){
+        res.push(array1[i1])
+        i1++
+    }
+    while(i2<l2){
+        res.push(array2[i2])
+        i2++
+    }
+    console.log('合并两个有序数组：' + res);
+    //////////////////////////////////////////////////////////////////////////////////
+    //快速排序
+    function quikySort(array, start, end) {
+        let length = array.length;
+        // 如果不是数组或者数组长度小于等于1，直接返回，不需要排序 
+        if (!Array.isArray(array) || length <= 1 || start >= end) return arr = array;
+        let index = this.quikySortFunction(array,start,end)//获取数组分成两部分后右部分的第一个值索引
+        this.quikySort(array, start, index-1)//递归
+        this.quikySort(array, index+1, end)//递归
+    }
+    function quikySortFunction(array, start, end) {
+        let imNum = array[start]//保存枢纽值
+        while(start<end){//当start=end时停止
+            while(array[end] >= imNum && start < end){
+                end--
+            }
+            array[start] = array[end]
+            while(array[start] < imNum && start < end){
+                start++
+            }
+            array[end] = array[start]
+        }
+        array[start] = imNum
+        return start
+    }
+    this.quikySort(arr,0,13)
+    console.log('快速排序' + arr);
+</script>
+
+</html>
